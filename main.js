@@ -36,8 +36,10 @@ btn.addEventListener("click", () => {
 });
 
 input.addEventListener("keydown", (event) => {
-  const key = event.key;
-  if (key === "Enter") {
+  if (event.isComposing) {
+    return;
+  }
+  if (event.key === "Enter") {
     onAdd();
   }
 });
