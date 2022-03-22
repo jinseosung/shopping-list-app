@@ -1,6 +1,12 @@
 const items = document.querySelector(".items");
+const form = document.querySelector(".new-form");
 const input = document.querySelector(".footer__input");
 const btn = document.querySelector(".footer__btn");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  onAdd();
+});
 
 function onAdd() {
   const text = input.value;
@@ -30,19 +36,6 @@ function createItem(text) {
       `;
   return itemRow;
 }
-
-btn.addEventListener("click", () => {
-  onAdd();
-});
-
-input.addEventListener("keydown", (event) => {
-  if (event.isComposing) {
-    return;
-  }
-  if (event.key === "Enter") {
-    onAdd();
-  }
-});
 
 items.addEventListener("click", (event) => {
   const id = event.target.dataset.id;
